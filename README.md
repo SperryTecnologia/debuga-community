@@ -6,11 +6,11 @@
 
 **Instalador · Documentação · Comunidade · OpenInfra**
 
-[![Status](https://img.shields.io/badge/status-engineering_preview-2563EB?style=for-the-badge)](#status-do-projeto)
+[![Status](https://img.shields.io/badge/status-em_homologa%C3%A7%C3%A3o-2563EB?style=for-the-badge)](#status-do-projeto)
 [![Instalador](https://img.shields.io/badge/instalador-V1-7C3AED?style=for-the-badge)](#instalador-v1)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](#plataforma-homologada)
-[![Docker](https://img.shields.io/badge/Docker-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#arquitetura)
-[![Security](https://img.shields.io/badge/security-Segurança-059669?style=for-the-badge)](SECURITY.md)
+[![Docker](https://img.shields.io/badge/Docker-Docker-2496ED?style=flat&logo=docker&logoColor=white)](#arquitetura)
+[![Seguran%C3%A7a](https://img.shields.io/badge/seguran%C3%A7a-Seguran%C3%A7a-059669?style=for-the-badge)](SECURITY.md)
 
 ---
 
@@ -118,7 +118,7 @@ flowchart LR
 | Autorização de acesso | Controlado | Autorização de uso |
 
 > Tornar o instalador público não significa liberar o produto para uso
-> irrestrito.
+> sem autenticação.
 
 ---
 
@@ -230,7 +230,7 @@ A instalação padrão pretende utilizar uma stack pequena e previsível:
 |---|---|
 | Aplicação Debuga | Aplicação |
 | PostgreSQL 16 | Banco de dados |
-| MinIO | Object storage |
+| MinIO | Armazenamento de objetos |
 | Caddy | Gateway HTTP / HTTPS |
 
 ### Não faz parte da instalação padrão V1
@@ -331,7 +331,7 @@ O primeiro alvo oficial do Instalador V1 é:
 | Runtime | Docker Engine |
 | Gateway | Caddy |
 | Banco | PostgreSQL 16 |
-| Storage | MinIO |
+| Armazenamento | MinIO |
 
 ### Futuras homologações
 
@@ -373,7 +373,7 @@ O modelo final utilizará:
 
 ---
 
-## Golden Application Baseline
+## Baseline Homologada da Aplicação (Golden Application Baseline)
 
 O Instalador V1 não tem como objetivo redesenhar ou modificar a aplicação.
 
@@ -478,7 +478,7 @@ Nunca publique:
 
 - credenciais;
 - tokens;
-- private keys;
+- chaves privadas;
 - banco de dados;
 - dumps;
 - evidências internas;

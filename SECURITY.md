@@ -10,8 +10,8 @@ logs:
 - senhas;
 - API keys;
 - tokens;
-- registry credentials;
-- private keys;
+- credenciais de registry;
+- chaves privadas;
 - arquivos `.env` de produção;
 - banco de dados;
 - dumps;
@@ -58,7 +58,7 @@ podem continuar presentes no histórico Git.
 
 ## Evidências Internas
 
-Evidências de engenharia, auditorias de produção, database schema dumps e
+Evidências de engenharia, auditorias de produção, dumps do schema do banco e
 artefatos internos da Phase 2 devem permanecer fora deste repositório
 público, salvo aprovação e sanitização explícitas.
 
