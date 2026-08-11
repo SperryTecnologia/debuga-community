@@ -2,23 +2,28 @@
 
 # Debuga Community
 
-### Infraestrutura simples. Implantação reproduzível. Acesso controlado.
+### Infraestrutura simples. Implantação reproduzível. Acesso autenticado.
 
-**Installer · Documentation · Community · OpenInfra**
+**Instalador · Documentação · Comunidade · OpenInfra**
 
 [![Status](https://img.shields.io/badge/status-engineering_preview-2563EB?style=for-the-badge)](#status-do-projeto)
-[![Installer](https://img.shields.io/badge/installer-V1-7C3AED?style=for-the-badge)](#installer-v1)
+[![Instalador](https://img.shields.io/badge/instalador-V1-7C3AED?style=for-the-badge)](#instalador-v1)
 [![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04_LTS-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)](#plataforma-homologada)
-[![Docker](https://img.shields.io/badge/Docker-containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#arquitetura)
-[![Security](https://img.shields.io/badge/security-first-059669?style=for-the-badge)](SECURITY.md)
+[![Docker](https://img.shields.io/badge/Docker-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#arquitetura)
+[![Security](https://img.shields.io/badge/security-Segurança-059669?style=for-the-badge)](SECURITY.md)
 
 ---
 
-### Public Distribution ≠ Unrestricted Access
+### Distribuição pública. Uso autenticado.
 
-O **Debuga Community** é a camada pública de distribuição, documentação e colaboração do ecossistema Debuga.ai.
+O **Debuga Community** é a camada pública de distribuição, documentação e
+colaboração do ecossistema Debuga.
 
 O código-fonte principal da aplicação permanece privado e controlado.
+
+O termo **Community** identifica o repositório público de distribuição,
+documentação e colaboração do ecossistema Debuga. Não representa, por si
+só, uma edição funcionalmente limitada da aplicação.
 
 </div>
 
@@ -30,7 +35,7 @@ O `debuga-community` foi criado para tornar a implantação do Debuga mais
 simples, reproduzível e acessível para alunos, laboratórios, clientes e
 profissionais de infraestrutura.
 
-O objetivo é permitir que uma instalação futura seja realizada sem exigir:
+O objetivo é permitir que uma instalação seja realizada sem exigir:
 
 - acesso ao repositório privado da aplicação;
 - compilação local;
@@ -41,13 +46,18 @@ O objetivo é permitir que uma instalação futura seja realizada sem exigir:
 - configuração manual de TLS no modo PUBLIC;
 - credenciais internas da Sperry Tecnologia.
 
+O instalador e a documentação do Debuga são públicos. Alunos OpenInfra
+autenticados têm acesso integral ao ambiente e aos recursos disponibilizados
+para sua formação. Clientes e demais usuários acessam o Debuga conforme a
+autorização vinculada à sua conta.
+
 A experiência desejada é:
 
 ```text
 VM ou VPS limpa
       │
       ▼
-Debuga Installer
+Instalador Debuga
       │
       ▼
 Validação automática
@@ -62,7 +72,7 @@ Debuga disponível
 Autenticação
       │
       ▼
-Entitlement
+Autorização de acesso
       │
       ▼
 Acesso autorizado
@@ -74,15 +84,15 @@ Acesso autorizado
 
 ```mermaid
 flowchart LR
-    SRC["Private Application Source"]
-    BUILD["Controlled Build"]
-    IMAGE["Official Debuga Image"]
+    SRC["Código-fonte privado da aplicação"]
+    BUILD["Build controlado"]
+    IMAGE["Imagem oficial Debuga"]
     COMMUNITY["Debuga Community"]
-    INSTALLER["Public Installer"]
-    HOST["Student / Customer Host"]
-    AUTH["Authentication"]
-    ENT["Entitlement"]
-    ACCESS["Authorized Access"]
+    INSTALLER["Instalador público"]
+    HOST["Host do aluno / cliente"]
+    AUTH["Autenticação"]
+    ENT["Autorização de acesso"]
+    ACCESS["Acesso autorizado"]
 
     SRC --> BUILD
     BUILD --> IMAGE
@@ -103,9 +113,9 @@ flowchart LR
 | Código da aplicação | Privado | Produto e desenvolvimento |
 | Build oficial | Controlado | Produção da imagem homologada |
 | Imagem Debuga | Versionada | Artefato executável |
-| Debuga Community | Público | Installer, docs, templates e manifests |
+| Debuga Community | Público | Instalador, documentação, templates e manifests |
 | Autenticação | Controlado | Identidade do usuário |
-| Entitlement | Controlado | Autorização de uso |
+| Autorização de acesso | Controlado | Autorização de uso |
 
 > Tornar o instalador público não significa liberar o produto para uso
 > irrestrito.
@@ -116,12 +126,12 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-    A["debuga-ai-prod<br/>PRIVATE"]
+    A["debuga-ai-prod<br/>PRIVADO"]
     B["Build Controlado"]
     C["Imagem Oficial"]
-    D["Container Registry"]
-    E["debuga-community<br/>PUBLIC"]
-    F["Installer"]
+    D["Registry de Contêineres"]
+    E["debuga-community<br/>PÚBLICO"]
+    F["Instalador"]
     G["Servidor do Usuário"]
 
     A --> B
@@ -138,9 +148,9 @@ O fluxo é baseado em artefatos versionados e rastreáveis.
 
 ---
 
-## Installer V1
+## Instalador V1
 
-O Installer V1 está sendo projetado para perguntar ao usuário apenas o
+O Instalador V1 está sendo projetado para perguntar ao usuário apenas o
 estritamente necessário.
 
 ### Modo LOCAL
@@ -155,9 +165,9 @@ Indicado para:
 
 ```mermaid
 flowchart LR
-    BROWSER["Browser"]
+    BROWSER["Navegador"]
     CADDY["Caddy :8080"]
-    APP["Debuga App"]
+    APP["Aplicação Debuga"]
     DB["PostgreSQL"]
     MINIO["MinIO"]
 
@@ -175,7 +185,7 @@ Características:
 - sem Certbot;
 - sem Nginx Proxy Manager;
 - sem pfSense obrigatório;
-- banco não publicado no host;
+- banco de dados não publicado no host;
 - MinIO não publicado no host.
 
 ---
@@ -192,7 +202,7 @@ Indicado para:
 flowchart LR
     INTERNET["Internet"]
     CADDY["Caddy :80 / :443"]
-    APP["Debuga App"]
+    APP["Aplicação Debuga"]
     DB["PostgreSQL"]
     MINIO["MinIO"]
 
@@ -218,7 +228,7 @@ A instalação padrão pretende utilizar uma stack pequena e previsível:
 
 | Componente | Papel |
 |---|---|
-| Debuga App | Aplicação |
+| Aplicação Debuga | Aplicação |
 | PostgreSQL 16 | Banco de dados |
 | MinIO | Object storage |
 | Caddy | Gateway HTTP / HTTPS |
@@ -237,7 +247,7 @@ Recursos de IA local poderão aparecer futuramente como módulos opcionais.
 
 ---
 
-## Autenticação e Entitlement
+## Autenticação e Autorização de Acesso
 
 Princípio fundamental:
 
@@ -249,11 +259,11 @@ O uso da aplicação continua associado a uma identidade autorizada.
 
 ```mermaid
 flowchart LR
-    INSTALL["Installation"]
-    LOGIN["Debuga Login"]
-    ID["Identity"]
-    ENT["Entitlement"]
-    APP["Application Access"]
+    INSTALL["Instalação"]
+    LOGIN["Login Debuga"]
+    ID["Identidade"]
+    ENT["Autorização de acesso"]
+    APP["Acesso à aplicação"]
 
     INSTALL --> LOGIN
     LOGIN --> ID
@@ -261,7 +271,7 @@ flowchart LR
     ENT --> APP
 ```
 
-O installer público nunca deve conter:
+O instalador público nunca deve conter:
 
 - senha compartilhada;
 - token GitHub pessoal;
@@ -275,9 +285,41 @@ Distribuição e autorização permanecem separadas.
 
 ---
 
+## Alunos OpenInfra
+
+O aluno OpenInfra autorizado e autenticado possui acesso integral ao
+ambiente e aos recursos disponibilizados para sua formação.
+
+O Debuga Community foi projetado para também suportar o ecossistema de
+aprendizado e homologação OpenInfra.
+
+```text
+OpenInfra
+    │
+    ▼
+Aluno / Profissional
+    │
+    ▼
+Debuga Community
+    │
+    ▼
+Instalador
+    │
+    ▼
+VM / VPS
+    │
+    ▼
+Debuga
+```
+
+A meta é tornar infraestrutura inteligente reproduzível sem transformar o
+processo de instalação em uma barreira de entrada.
+
+---
+
 ## Plataforma Homologada
 
-O primeiro alvo oficial do Installer V1 é:
+O primeiro alvo oficial do Instalador V1 é:
 
 | Requisito | V1 |
 |---|---|
@@ -306,19 +348,19 @@ Ainda não devem ser consideradas oficialmente suportadas:
 Cada release oficial deverá possuir rastreabilidade.
 
 ```text
-Installer Version
+Versão do Instalador
        │
        ▼
-Debuga Version
+Versão do Debuga
        │
        ▼
-Image Digest
+Digest da Imagem
        │
        ▼
-Schema Version
+Versão do Schema
        │
        ▼
-Release Date
+Data da Release
 ```
 
 O modelo final utilizará:
@@ -333,7 +375,7 @@ O modelo final utilizará:
 
 ## Golden Application Baseline
 
-O Installer V1 não tem como objetivo redesenhar ou modificar a aplicação.
+O Instalador V1 não tem como objetivo redesenhar ou modificar a aplicação.
 
 A primeira release deverá preservar o comportamento funcional validado da
 aplicação de referência.
@@ -347,7 +389,7 @@ Isso inclui, entre outros:
 - comportamento funcional;
 - integrações existentes aprovadas.
 
-O trabalho do Installer é alterar **como o produto é implantado**, não
+O trabalho do Instalador é alterar **como o produto é implantado**, não
 reescrever o produto.
 
 ---
@@ -356,7 +398,7 @@ reescrever o produto.
 
 Conteúdo que poderá existir neste repositório:
 
-- Installer V1;
+- Instalador V1;
 - prechecks públicos;
 - documentação;
 - templates;
@@ -437,7 +479,7 @@ Nunca publique:
 - credenciais;
 - tokens;
 - private keys;
-- banco;
+- banco de dados;
 - dumps;
 - evidências internas;
 - dados de clientes;
@@ -457,7 +499,7 @@ O Debuga Community poderá receber contribuições em:
 - backups;
 - exemplos;
 - integrações;
-- melhorias no installer público.
+- melhorias no instalador público.
 
 Veja:
 
@@ -471,13 +513,13 @@ O núcleo proprietário da aplicação segue processo separado.
 
 | Fase | Estado |
 |---|---|
-| Arquitetura do Installer V1 | ✅ Concluída |
+| Arquitetura do Instalador V1 | ✅ Concluída |
 | Precheck em VM limpa | ✅ Aprovado |
 | Baseline canônico do banco | 🚧 Em andamento |
-| Golden Docker Image | ⏳ Pendente |
-| Installer LOCAL | ⏳ Pendente |
+| Imagem Docker Golden | ⏳ Pendente |
+| Instalador LOCAL | ⏳ Pendente |
 | Homologação LOCAL | ⏳ Pendente |
-| Installer PUBLIC | ⏳ Pendente |
+| Instalador PUBLIC | ⏳ Pendente |
 | Homologação PUBLIC | ⏳ Pendente |
 | Release V1.0.0 | ⏳ Pendente |
 
@@ -489,15 +531,15 @@ Executáveis públicos somente serão disponibilizados após homologação.
 
 ```mermaid
 flowchart LR
-    A["Architecture"]
+    A["Arquitetura"]
     B["Precheck"]
-    C["Schema Baseline"]
-    D["Golden Image"]
-    E["LOCAL Installer"]
-    F["LOCAL Homologation"]
-    G["PUBLIC Installer"]
-    H["PUBLIC Homologation"]
-    I["V1 Release"]
+    C["Baseline do Schema"]
+    D["Imagem Golden"]
+    E["Instalador LOCAL"]
+    F["Homologação LOCAL"]
+    G["Instalador PUBLIC"]
+    H["Homologação PUBLIC"]
+    I["Release V1"]
 
     A --> B --> C --> D --> E --> F --> G --> H --> I
 ```
@@ -517,41 +559,12 @@ explícita.
 
 ---
 
-## Relação com OpenInfra
-
-O Debuga Community foi projetado para também suportar o ecossistema de
-aprendizado e homologação OpenInfra.
-
-```text
-OpenInfra
-    │
-    ▼
-Aluno / Profissional
-    │
-    ▼
-Debuga Community
-    │
-    ▼
-Installer
-    │
-    ▼
-VM / VPS
-    │
-    ▼
-Debuga
-```
-
-A meta é tornar infraestrutura inteligente reproduzível sem transformar o
-processo de instalação em uma barreira de entrada.
-
----
-
 <div align="center">
 
 ## Debuga Community
 
-**Repeatable infrastructure. Controlled distribution. Intelligent operations.**
+**Infraestrutura reproduzível. Distribuição controlada. Acesso autenticado.**
 
-Maintained by **Sperry Tecnologia**
+Mantido por **Sperry Tecnologia**
 
 </div>

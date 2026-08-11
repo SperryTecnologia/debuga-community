@@ -1,4 +1,4 @@
-# Contributing to Debuga Community
+# Contribuindo com o Debuga Community
 
 Obrigado por contribuir com o ecossistema público do Debuga.
 
@@ -23,6 +23,10 @@ O código-fonte principal da aplicação Debuga é mantido separadamente e não
 faz parte deste repositório.
 
 Contribuições ao núcleo proprietário seguem outro processo.
+
+O termo **Community** identifica o repositório público de distribuição,
+documentação e colaboração do ecossistema Debuga. Não representa, por si
+só, uma edição funcionalmente limitada da aplicação.
 
 ## Antes de Enviar
 
@@ -51,15 +55,15 @@ Nunca envie:
 
 Leia também [SECURITY.md](SECURITY.md).
 
-## Mudanças no Installer
+## Mudanças no Instalador
 
-Alterações no Installer recebem revisão adicional.
+Alterações no Instalador recebem revisão adicional.
 
 Não devem:
 
 - introduzir credenciais ocultas;
 - enfraquecer autenticação;
-- enfraquecer entitlement;
+- enfraquecer autorização de acesso;
 - expor serviços internos sem necessidade;
 - remover verificações de integridade;
 - alterar plataforma suportada sem homologação.
@@ -72,3 +76,9 @@ A documentação deve diferenciar claramente:
 - comportamento experimental;
 - recurso planejado;
 - item futuro de roadmap.
+
+## Alunos OpenInfra
+
+Alunos OpenInfra autenticados têm acesso integral ao ambiente e aos recursos
+disponibilizados para sua formação. A documentação não deve sugerir edição
+limitada para alunos nem uso anônimo do produto.
