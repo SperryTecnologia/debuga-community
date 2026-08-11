@@ -72,8 +72,9 @@ Acesso ao Debuga
 Aluno OpenInfra autorizado e autenticado possui acesso integral ao ambiente
 e aos recursos disponibilizados para sua formação.
 
-Não é um conceito de "acesso irrestrito": o acesso continua condicionado à
-autorização. A instalação não significa licença automática.
+O acesso integral ao ambiente de formação continua condicionado à
+autenticação e à autorização vinculada ao aluno. A instalação, por si só,
+não concede acesso ao produto.
 
 ---
 
@@ -99,8 +100,8 @@ Permanece fora do repositório público:
 | Categoria | Exemplos |
 |---|---|
 | Código-fonte proprietário | Aplicação Debuga (repositório privado da aplicação) |
-| Secrets | Tokens, chaves de API, private keys |
-| Credenciais | Arquivos `.env` reais, credenciais de registry |
+| Secrets | Tokens, chaves de API, chaves privadas |
+| Credenciais | Arquivos `.env` reais, credenciais de registry, chaves privadas |
 | Dados operacionais | Dumps de banco, evidências de produção |
 | Auditorias internas | Evidências de auditoria, Phase 2 |
 | Dados de clientes | Configurações e dados específicos de clientes |
@@ -173,14 +174,18 @@ domínio obrigatório, sem TLS.
 flowchart LR
     INTERNET["Internet"]
     CADDY["Caddy :80 / :443"]
-    APP["Debuga"]
+    APP["Debuga App"]
 
-    INTERNET -->|HTTP / HTTPS| CADDY
-    CADDY -->|HTTPS automático| APP
+    INTERNET -->|"HTTP / HTTPS"| CADDY
+    CADDY -->|proxy interno| APP
 ```
 
 Indicado para VPS e servidor publicado diretamente. Domínio obrigatório e
-HTTPS automático, com o Caddy como proprietário único do TLS.
+HTTPS automático na borda, com o Caddy como proprietário único do TLS.
+
+O Caddy termina o TLS e encaminha internamente as requisições para o
+Debuga App. O HTTPS interno entre Caddy e Debuga não é definido no modo
+padrão.
 
 ### Modo EDGE (futuro)
 
