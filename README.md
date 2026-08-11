@@ -82,6 +82,9 @@ Acesso autorizado
 
 ## Arquitetura
 
+A especificação arquitetural completa está em
+[docs/architecture/REPOSITORY-SPEC.md](docs/architecture/REPOSITORY-SPEC.md).
+
 ```mermaid
 flowchart LR
     SRC["Código-fonte privado da aplicação"]
