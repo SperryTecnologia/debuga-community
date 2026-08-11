@@ -1,10 +1,11 @@
-# Security Policy
+# Política de Segurança
 
 Segurança é parte fundamental do Debuga Community.
 
 ## Informações Sensíveis
 
-Nunca publique neste repositório, Issues, Discussions, Pull Requests ou logs:
+Nunca publique neste repositório, Issues, Discussions, Pull Requests ou
+logs:
 
 - senhas;
 - API keys;
@@ -25,9 +26,9 @@ Não publique vulnerabilidades ainda não corrigidas em Issues públicas.
 Utilize o mecanismo privado de comunicação de segurança disponibilizado pelo
 projeto ou um canal oficial da Sperry Tecnologia.
 
-## Installer Público
+## Instalador Público
 
-O Installer público nunca deverá conter:
+O instalador público nunca deverá conter:
 
 - credenciais compartilhadas;
 - GitHub Personal Access Tokens;
@@ -39,7 +40,7 @@ O Installer público nunca deverá conter:
 Distribuição e autorização são conceitos independentes.
 
 O controle de acesso ao Debuga pertence à camada de autenticação e
-entitlement da aplicação.
+autorização de acesso da aplicação.
 
 ## Vazamento Acidental
 
@@ -60,3 +61,11 @@ podem continuar presentes no histórico Git.
 Evidências de engenharia, auditorias de produção, database schema dumps e
 artefatos internos da Phase 2 devem permanecer fora deste repositório
 público, salvo aprovação e sanitização explícitas.
+
+## Autenticação e Autorização de Acesso
+
+A publicação do instalador e da documentação não altera os requisitos de
+autenticação e autorização de acesso do produto. Alunos OpenInfra
+autenticados têm acesso integral ao ambiente e aos recursos disponibilizados
+para sua formação; clientes e demais usuários acessam o Debuga conforme a
+autorização vinculada à sua conta.

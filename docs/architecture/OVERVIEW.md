@@ -1,4 +1,4 @@
-# Debuga Community Architecture
+# Arquitetura do Debuga Community
 
 ## Objetivo
 
@@ -6,19 +6,23 @@ O Debuga Community fornece a camada pública de distribuição do ecossistema
 Debuga preservando uma fronteira explícita entre recursos públicos de
 implantação e o código privado da aplicação.
 
-## Distribution Boundary
+O termo **Community** identifica o repositório público de distribuição,
+documentação e colaboração do ecossistema Debuga. Não representa, por si
+só, uma edição funcionalmente limitada da aplicação.
+
+## Fronteira de Distribuição
 
 ```mermaid
 flowchart TB
-    PRIVATE["Private Application Source"]
-    BUILD["Controlled Build Pipeline"]
-    IMAGE["Official Versioned Image"]
+    PRIVATE["Código-fonte privado da aplicação"]
+    BUILD["Pipeline de build controlado"]
+    IMAGE["Imagem oficial versionada"]
     COMMUNITY["Debuga Community"]
-    INSTALLER["Public Installer"]
-    TARGET["Student / Customer Host"]
-    AUTH["Authentication"]
-    ENT["Entitlement"]
-    ACCESS["Authorized Access"]
+    INSTALLER["Instalador público"]
+    TARGET["Host do aluno / cliente"]
+    AUTH["Autenticação"]
+    ENT["Autorização de acesso"]
+    ACCESS["Acesso autorizado"]
 
     PRIVATE --> BUILD
     BUILD --> IMAGE
@@ -34,9 +38,9 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    USER["Browser"]
+    USER["Navegador"]
     GATEWAY["Caddy"]
-    APP["Debuga App"]
+    APP["Aplicação Debuga"]
     DB["PostgreSQL"]
     STORAGE["MinIO"]
 
@@ -46,18 +50,18 @@ flowchart LR
     APP --> STORAGE
 ```
 
-## LOCAL
+## Modo LOCAL
 
 ```text
-Browser → HTTP :8080 → Caddy → Debuga App
+Navegador → HTTP :8080 → Caddy → Aplicação Debuga
 ```
 
 Indicado para laboratório, curso, homologação e rede interna.
 
-## PUBLIC
+## Modo PUBLIC
 
 ```text
-Internet → HTTP/HTTPS :80/:443 → Caddy → Debuga App
+Internet → HTTP/HTTPS :80/:443 → Caddy → Aplicação Debuga
 ```
 
 Indicado para VPS ou servidor publicado diretamente.
@@ -65,28 +69,33 @@ Indicado para VPS ou servidor publicado diretamente.
 ## Princípio de Segurança
 
 ```text
-Public Distribution
+Distribuição pública
         ≠
-Authorized Use
+Uso autorizado
 ```
 
 Disponibilizar recursos de instalação publicamente não remove os requisitos
-de autenticação e entitlement do produto.
+de autenticação e autorização de acesso do produto.
+
+## Alunos OpenInfra
+
+Alunos OpenInfra autorizados e autenticados possuem acesso integral ao
+ambiente e aos recursos disponibilizados para sua formação.
 
 ## Princípio de Release
 
 ```text
-Source
-  ↓
-Controlled Build
-  ↓
-Immutable Image
-  ↓
-Release Manifest
-  ↓
-Installer
-  ↓
-Validated Deployment
+Código-fonte
+    ↓
+Build controlado
+    ↓
+Imagem imutável
+    ↓
+Manifesto de release
+    ↓
+Instalador
+    ↓
+Implantação validada
 ```
 
 Cada componente público deve ser rastreável e verificável antes de uma

@@ -1,4 +1,4 @@
-# Community Code of Conduct
+# Código de Conduta da Comunidade
 
 O Debuga Community existe para apoiar aprendizado técnico, colaboração e
 boas práticas profissionais de infraestrutura.
