@@ -1,0 +1,41 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Secrets / certificates
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Databases / internal evidence
+*.dump
+*.backup
+*.sql.gz
+debuga-installer-audit/
+phase2-*/
+production-audit*/
+evidence/
+
+# Logs / temporary
+*.log
+*.tmp
+*.swp
+.DS_Store
+
+# Editors
+.vscode/
+.idea/
+
+# Dependencies / builds
+node_modules/
+dist/
+build/
+.next/
+
+# Local overrides
+config.local.*
+docker-compose.override.yml
