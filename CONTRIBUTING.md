@@ -43,10 +43,10 @@ Uma contribuição deve ser:
 
 Nunca envie:
 
-- passwords;
+- senhas;
 - tokens;
 - API keys;
-- private keys;
+- chaves privadas;
 - dumps;
 - banco de produção;
 - evidências internas;
