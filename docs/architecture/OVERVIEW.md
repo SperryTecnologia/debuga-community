@@ -1,5 +1,8 @@
 # Arquitetura do Debuga Community
 
+Para a especificação arquitetural completa do repositório, consulte
+[REPOSITORY-SPEC.md](REPOSITORY-SPEC.md).
+
 ## Objetivo
 
 O Debuga Community fornece a camada pública de distribuição do ecossistema
